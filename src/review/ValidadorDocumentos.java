@@ -19,7 +19,7 @@ public class ValidadorDocumentos {
         return (resto < 2) ? 0 : 11 - resto;
     }
 
-    public static boolean isCPF(Cliente cliente){
+    public static boolean isCPF(Cliente cliente) throws CPFInvalidoException{
         if(cliente.getCpf() == null) return false;
         cliente.setCpf(cliente.getCpf().replace("\\D", " "));
         if(cliente.getCpf().length() != 11 || cliente.getCpf().matches("(\\d)\\1{10}")) return false;
@@ -28,7 +28,8 @@ public class ValidadorDocumentos {
             int dig1 = calcularDigito(cliente.getCpf().substring(0, 9), 10);
             int dig2 = calcularDigito(cliente.getCpf().substring(0, 9) + dig1, 11);
             return cliente.getCpf().equals(cliente.getCpf().substring(0, 9) + dig1 + dig2);
-        } catch (Exception e) {
+        } catch (CPFInvalidoException e) {
+            System.out.println(e.getMensagem());
             return false;
         }
     }

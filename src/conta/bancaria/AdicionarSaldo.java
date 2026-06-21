@@ -18,9 +18,8 @@ public class AdicionarSaldo {
 
     public void removerSaldo(Saldo saldo, double saldoRemovido){
         saldo.setSaldo(saldoRemovido - saldo.getSaldo());
-        if (saldo.getSaldo() < saldoRemovido){
+        if (saldo.getSaldo() < saldoRemovido) {
             throw new ValorInsuficienteNaContaExecption("Saldo Insuficiente!");
         }
-
     }
 }
