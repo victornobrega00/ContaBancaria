@@ -18,7 +18,12 @@ public class ValidadorDocumentos {
         int resto = soma % 11;
         return (resto < 2) ? 0 : 11 - resto;
     }
-
+    public void execptionCPF(){
+        throw new CPFInvalidoException("CPF Inválido");
+    }
+    public void exceptionCNPJ(){
+        throw new CNPJInvalidoException("CNPJ Inváilido!");
+    }
     public static boolean isCPF(Cliente cliente) throws CPFInvalidoException{
         if(cliente.getCpf() == null) return false;
         cliente.setCpf(cliente.getCpf().replace("\\D", " "));
@@ -43,7 +48,8 @@ public class ValidadorDocumentos {
             int dig1 = calcularDigito(cliente.getCnpj().substring(0, 12), 5);
             int dig2 = calcularDigito(cliente.getCnpj().substring(0, 12) + dig1, 6);
             return cliente.getCnpj().equals(cliente.getCnpj().substring(0, 12) + dig1 + dig2);
-        } catch (Exception e) {
+        } catch (CNPJInvalidoException e) {
+            System.out.println(e.getMensagem());
             return false;
         }
     }
