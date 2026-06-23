@@ -1,4 +1,4 @@
-package conta.bancaria;
+package saldo.cliente;
 
 public class ValorInsuficienteNaContaExecption extends RuntimeException {
     private String mensagem;

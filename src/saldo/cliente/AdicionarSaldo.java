@@ -1,4 +1,6 @@
-package conta.bancaria;
+package saldo.cliente;
+
+import conta.bancaria.Cliente;
 
 public class AdicionarSaldo {
     private Saldo saldo;
@@ -16,10 +18,4 @@ public class AdicionarSaldo {
         saldo.setSaldo(saldoIncerido + saldo.getSaldo());
     }
 
-    public void removerSaldo(Saldo saldo, double saldoRemovido){
-        saldo.setSaldo(saldoRemovido - saldo.getSaldo());
-        if (saldo.getSaldo() < saldoRemovido) {
-            throw new ValorInsuficienteNaContaExecption("Saldo Insuficiente!");
-        }
-    }
 }

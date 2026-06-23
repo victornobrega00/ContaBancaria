@@ -1,4 +1,4 @@
-package review;
+package validador;
 
 public final class ValidadorDocumentos {
 
